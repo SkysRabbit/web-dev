@@ -1,0 +1,40 @@
+* {
+    padding: 5px;
+    margin: 5px;
+}
+
+html {
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+
+.data {
+    font-family:fantasy;
+    font-weight: 300;
+}
+
+#submit, #clear, #del, #get, #download {
+    color: rgb(197, 127, 255);
+    width: 100px;
+    font-size: medium;
+    font-family: fantasy;
+}
+
+table {
+    border-width: 2px;
+    margin: auto;
+    padding: 5px;
+    border-spacing: 0px;
+}
+th, td {
+    border-style:ridge;
+}
+
+li {
+    display: inline;
+}
+
+#table1 {
+    border-color: blue;
+}

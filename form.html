@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <title>JavaScript Programmer's Reference</title>
+    </head>
+    <body>
+        <p id="firstParagraph">Here is a paragraph.</p>
+        <p id="secondParagraph">Here is another paragraph. It contains <span>some other
+        tags,</span> <a href="http://www.google.com/">as well.</a></p>
+    <script>
+        var firstPar = document.getElementById("firstParagraph"),
+        secondPar = document.getElementById("secondParagraph"),
+        targetLink = document.querySelector("#secondParagraph a"),
+        myNewList = document.createElement("ul"),
+        myNewListItemTemplate = document.createElement("li"),
+        myNewListItem = myNewListItemTemplate.cloneNode(); // copy <li>
+        myNewListItem.classList.add("menuitem"); // class as menuitem
+        myNewListItem.innerText = "One";
+        myNewList.appendChild(myNewListItem); // add another <li>
+        myNewListItem = myNewListItemTemplate.cloneNode(); // copy <li>
+        myNewListItem.appendChild(targetLink);
+        myNewList.appendChild(myNewListItem); // add </li>
+        firstPar.appendChild(myNewList); // add </ul>
+    </script>
+        <div>
+            <ul>
+                <li>Click <b><a href="main.html">here</a></b> to return to main page</li>
+            </ul>
+        </div>
+    </body>
+</html>
+
+
+

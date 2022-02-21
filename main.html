@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <title>Hello</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="test.js"></script>
+    </head>
+    <body>
+        <h2>Form</h2>
+        <div id="form">
+            <!--class represents a group-->
+            <div class="data">Lastname: <input id="lastname" type="text"></div>
+            <div class="data">Firstname: <input id="firstname" type="text"></div>
+            
+            <button id="submit" onclick="displayData()">Submit</button>
+            <button id="clear" onclick="clearTable()">Clear all</button>
+            <button id="del" onclick="removeLastRow()">Delete last row</button>
+            <button id="download" onclick="exportData()">Download as csv</button>
+        </div>
+        <div id="link">
+            <ul>
+                <li><a href="newpage.html">another page</a></li>
+                <li><a href="form.html">Form</a></li>
+                <li><a href="name_list.html">Test Name List</a></li>
+            </ul>
+        </div>
+        <div>
+            <table id="table">
+                <tr>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+                </tr>
+            </table>  
+        </div>   
+    </body>
+</html>

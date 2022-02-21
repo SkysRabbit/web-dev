@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <title>Test Name List function</title>
+    </head>
+    <body>
+        <!--Create a selection box-->
+        <p>Click the button to view data</p>
+        <div id="stage"></div>
+        <input type="button" id="load" value="Load Data" />
+        <input type="button" id="reset" value="Reset Data" />
+        <a href="main.html">Main Page</a>
+        <table id="table1">
+            <tr>
+                <th>Tool</th>
+                <td>
+                    <select class="tool" id="tool"></select>
+                </td>
+            </tr>
+            <tr>
+                <th>Recipe</th>
+                <td>
+                    <select id="recipe"></select>
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p id="description"></p>
+                </td>
+            </tr>
+        </table>
+        <script>
+            // step 1: read data and list them
+            $(document).ready(function() {
+                $('#load').click(function (event) {
+                    $.getJSON('TY_PMO.json', function(data) {
+                        // Object.keys(data) -> 2 items(tool, recipe)
+                        var key = Object.keys(data.tool).toString();
+                        for (var i=0; i < Object.keys(data.tool).length; i++) {
+                            // stringify the key
+                            var content = Object.keys(data.tool)[i];
+                            $('#tool').append('<option value=' + content + 
+                                '>' + content + '</option>');
+                        }
+                        $('#tool').change(function () {
+                            // display value of data array
+                            //let items = []; // initialise
+                            tool_id = $('#tool option:selected').text(); // get current selection
+                            //alert(data.tool[tool_id]);
+                            $('#recipe').children().remove().end();
+                            for (var i=0; i < data.tool[tool_id].length; i++) {
+                                //alert(data.tool[tool_id][i]);
+                                //items.push(data.tool[tool_id][i]);
+                                //items.join(", ");
+                                $('#recipe').append('<option value=' + data.tool[tool_id][i] + 
+                                        'name=' + data.tool[tool_id][i] + '>' + data.tool[tool_id][i] + '</option>')
+                            }
+                        });
+
+                        // get description
+                        $('#recipe').change(function() {
+                            recipe_id = $('#recipe option:selected').text();
+                            $('#description').text(data.recipe[recipe_id]);
+                        })
+                    });
+                });
+
+                // reset everything
+                $('#reset').click(function() {
+                    $('#table1').find('option').remove().end();
+                    $('#description').text(""); // this is not a good way
+                });
+            });
+        </script>
+    </body>
+</html>
